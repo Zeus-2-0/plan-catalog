@@ -1,0 +1,2 @@
+INSERT INTO plancatalogdb.plan(plan_sk, plan_id, plan_name, plan_description, product_type) values ('95414f17-c81e-4774-af04-682e31d3559f', 'TEST_PLAN_ID', 'TEST_PLAN_NAME', 'TEST PLAN DESC', 'HMO');
+INSERT INTO plancatalogdb.plan(plan_sk, plan_id, plan_name, plan_description, product_type) values ('00521b65-b8e2-4672-abb5-76613b937a8e', 'TEST_PLAN_ID', 'TEST_PLAN_NAME', 'TEST PLAN DESC', 'PPO');

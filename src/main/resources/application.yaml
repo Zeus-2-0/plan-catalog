@@ -1,1 +1,32 @@
-
+zeus-plan-catalog:
+  api:
+    version: 1.0.0
+server:
+  port: 9002
+spring:
+  jpa:
+    hibernate:
+      ddl-auto: validate
+    properties:
+      hibernate:
+        show_sql: true
+        format_sql: true
+  profiles:
+    active: clean, local
+  datasource:
+    url: jdbc:mysql://localhost:3306/plancatalogdb?useUnicode=true&characterEncoding=UTF-8&serverTimezone=UTC
+    username: plancatalogapp
+    password: password
+  flyway:
+    user: plancatalogadmin
+    password: password
+    clean-disabled: false
+logging:
+  file:
+    name: logs/local/plan-catalog.log
+  level:
+    org:
+      hibernate:
+        type:
+          descriptor:
+            sql: trace
