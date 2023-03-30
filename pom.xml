@@ -9,7 +9,7 @@
     </parent>
     <groupId>com.brihaspathee.zeus</groupId>
     <artifactId>plan-catalog</artifactId>
-    <version>0.0.2-SNAPSHOT</version>
+    <version>1.0.0</version>
     <name>Plan Catalog</name>
     <description>Plan Catalog</description>
     <properties>
@@ -30,7 +30,7 @@
         <!--        <developerConnection>scm:git:ssh://github.com:Zeus-2-0/plan-catalog.git</developerConnection>-->
         <developerConnection>scm:git:git@github.com:Zeus-2-0/plan-catalog.git</developerConnection>
         <url>scm:git:http://github.com/Zeus-2-0/plan-catalog</url>
-        <tag>plan-catalog-0.0.1</tag>
+        <tag>plan-catalog-1.0.0</tag>
     </scm>
 
     <developers>
