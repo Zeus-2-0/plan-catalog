@@ -39,11 +39,20 @@ public class Plan {
     private UUID planSK;
 
     /**
-     * The location in which the plan is provided
+     * The details of the plan
      */
-    @ManyToOne
-    @JoinColumn(name = "geo_location_sk", nullable = false, columnDefinition = "varchar")
-    private GeoLocation geoLocation;
+    @OneToOne(mappedBy = "plan")
+    private PlanDetail planDetail;
+
+    /**
+     * The locations in which the plan is provided
+     */
+    @Singular
+    @ManyToMany
+    @JoinTable(name = "PLAN_GEO_LOCATION",
+            joinColumns = {@JoinColumn(name = "PLAN_SK")},
+            inverseJoinColumns = {@JoinColumn(name = "GEO_LOCATION_SK")})
+    private Set<GeoLocation> geoLocations;
 
     /**
      * The list of all the plan rates associated with the plan
@@ -97,7 +106,6 @@ public class Plan {
     public String toString() {
         return "Plan{" +
                 "planSK=" + planSK +
-                ", geoLocation=" + geoLocation +
                 ", planId='" + planId + '\'' +
                 ", planName='" + planName + '\'' +
                 ", productTypeCode='" + productTypeCode + '\'' +

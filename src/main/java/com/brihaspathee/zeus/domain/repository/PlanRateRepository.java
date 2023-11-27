@@ -1,28 +1,20 @@
 package com.brihaspathee.zeus.domain.repository;
 
-import com.brihaspathee.zeus.domain.entity.Plan;
+import com.brihaspathee.zeus.domain.entity.PlanRate;
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.stereotype.Repository;
 
-import java.util.Optional;
 import java.util.UUID;
 
 /**
  * Created in Intellij IDEA
  * User: Balaji Varadharajan
- * Date: 12, December 2022
- * Time: 2:44 PM
+ * Date: 05, May 2023
+ * Time: 9:52 AM
  * Project: Zeus
  * Package Name: com.brihaspathee.zeus.domain.repository
  * To change this template use File | Settings | File and Code Template
  */
 @Repository
-public interface PlanRepository extends JpaRepository<Plan, UUID> {
-
-    /**
-     * Find plan by plan id
-     * @param planId
-     * @return
-     */
-    Optional<Plan> findPlanByPlanId(String planId);
+public interface PlanRateRepository extends JpaRepository<PlanRate, UUID> {
 }

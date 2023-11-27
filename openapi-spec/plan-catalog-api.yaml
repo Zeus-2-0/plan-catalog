@@ -40,20 +40,79 @@ paths:
                 $ref: '#/components/schemas/WelcomeDto'
 components:
   schemas:
+    GeoLocation:
+      type: object
+      properties:
+        geoLocationSK:
+          type: string
+          format: uuid
+        stateTypeCode:
+          type: string
+        fipsCode:
+          type: string
+        zipCode:
+          type: string
+        plans:
+          uniqueItems: true
+          type: array
+          items:
+            $ref: '#/components/schemas/Plan'
+        createdDate:
+          type: string
+          format: date-time
+        updatedDate:
+          type: string
+          format: date-time
     Plan:
       type: object
       properties:
         planSK:
           type: string
           format: uuid
+        planDetail:
+          $ref: '#/components/schemas/PlanDetail'
+        geoLocations:
+          uniqueItems: true
+          type: array
+          items:
+            $ref: '#/components/schemas/GeoLocation'
+        planRates:
+          uniqueItems: true
+          type: array
+          items:
+            $ref: '#/components/schemas/PlanRate'
         planId:
           type: string
         planName:
           type: string
-        productType:
+        productTypeCode:
           type: string
         planDescription:
           type: string
+        createdDate:
+          type: string
+          format: date-time
+        updatedDate:
+          type: string
+          format: date-time
+    PlanDetail:
+      type: object
+      properties:
+        planDetailSK:
+          type: string
+          format: uuid
+        plan:
+          $ref: '#/components/schemas/Plan'
+        planMarketingName:
+          type: string
+        planLevelTypeCode:
+          type: string
+        createdDate:
+          type: string
+          format: date-time
+        updatedDate:
+          type: string
+          format: date-time
     PlanList:
       type: object
       properties:
@@ -61,6 +120,29 @@ components:
           type: array
           items:
             $ref: '#/components/schemas/Plan'
+    PlanRate:
+      type: object
+      properties:
+        planRateSK:
+          type: string
+          format: uuid
+        plan:
+          $ref: '#/components/schemas/Plan'
+        planPremiumRate:
+          type: number
+        age:
+          type: integer
+          format: int32
+        genderTypeCode:
+          type: string
+        tobaccoInd:
+          type: boolean
+        createdDate:
+          type: string
+          format: date-time
+        updatedDate:
+          type: string
+          format: date-time
     ZeusApiResponsePlanList:
       type: object
       properties:

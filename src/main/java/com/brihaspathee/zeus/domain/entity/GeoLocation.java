@@ -61,7 +61,7 @@ public class GeoLocation {
     /**
      * The list of all the plans that are offered at the location
      */
-    @OneToMany(mappedBy = "geoLocation", fetch = FetchType.EAGER)
+    @ManyToMany(mappedBy = "geoLocations")
     private Set<Plan> plans;
 
     /**
