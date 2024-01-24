@@ -2,6 +2,7 @@ package com.brihaspathee.zeus.web.resource.impl;
 
 import com.brihaspathee.zeus.domain.entity.Plan;
 import com.brihaspathee.zeus.domain.repository.PlanRepository;
+import com.brihaspathee.zeus.web.model.GeoLocationList;
 import com.brihaspathee.zeus.web.model.PlanList;
 import com.brihaspathee.zeus.web.resource.interfaces.PlanAPI;
 import com.brihaspathee.zeus.web.response.ZeusApiResponse;
@@ -36,5 +37,20 @@ public class PlanAPIImpl implements PlanAPI {
                 .response(planList)
                 .build();
         return ResponseEntity.ok(apiResponse);
+    }
+
+    @Override
+    public ResponseEntity<ZeusApiResponse<GeoLocationList>> getPlansByState(String stateTypeCode) {
+        return null;
+    }
+
+    @Override
+    public ResponseEntity<ZeusApiResponse<GeoLocationList>> getPlansByCounty(String fipsCode) {
+        return null;
+    }
+
+    @Override
+    public ResponseEntity<ZeusApiResponse<GeoLocationList>> getPlansByZip(String zipCode) {
+        return null;
     }
 }

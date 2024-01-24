@@ -36,4 +36,16 @@ public class PlanDto {
     private String productTypeCode;
 
     private PlanDetailDto planDetailDto;
+
+    @Override
+    public String toString() {
+        return "PlanDto{" +
+                "planSK=" + planSK +
+                ", planId='" + planId + '\'' +
+                ", planName='" + planName + '\'' +
+                ", planDescription='" + planDescription + '\'' +
+                ", productTypeCode='" + productTypeCode + '\'' +
+                ", planDetailDto=" + planDetailDto +
+                '}';
+    }
 }

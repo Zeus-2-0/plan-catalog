@@ -1,5 +1,8 @@
 package com.brihaspathee.zeus.service.impl;
 
+import com.brihaspathee.zeus.domain.entity.GeoLocation;
+import com.brihaspathee.zeus.domain.repository.GeoLocationRepository;
+import com.brihaspathee.zeus.mapper.interfaces.GeoLocationMapper;
 import com.brihaspathee.zeus.service.interfaces.GeoLocationService;
 import com.brihaspathee.zeus.web.model.GeoLocationDto;
 import lombok.RequiredArgsConstructor;
@@ -23,13 +26,24 @@ import java.util.List;
 public class GeoLocationServiceImpl implements GeoLocationService {
 
     /**
+     * Instance of the geolocation repository
+     */
+    private final GeoLocationRepository geoLocationRepository;
+
+    /**
+     * Instance of the geolocation mapper
+     */
+    private final GeoLocationMapper geoLocationMapper;
+
+    /**
      * Create the requested geo location
      * @param geoLocationDto
      * @return
      */
     @Override
     public GeoLocationDto createGeoLocation(GeoLocationDto geoLocationDto) {
-        return null;
+        GeoLocation geoLocation = geoLocationMapper.locationDtoToLocation(geoLocationDto);
+        return geoLocationMapper.locationToLocationDto(geoLocationRepository.save(geoLocation));
     }
 
     /**
@@ -39,6 +53,6 @@ public class GeoLocationServiceImpl implements GeoLocationService {
      */
     @Override
     public List<GeoLocationDto> createGeoLocations(List<GeoLocationDto> geoLocationDtos) {
-        return null;
+        return geoLocationDtos.stream().map(this::createGeoLocation).toList();
     }
 }

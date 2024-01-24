@@ -1,5 +1,8 @@
 package com.brihaspathee.zeus.bootstrap;
 
+import com.brihaspathee.zeus.service.interfaces.GeoLocationService;
+import com.brihaspathee.zeus.service.interfaces.PlanRateService;
+import com.brihaspathee.zeus.service.interfaces.PlanService;
 import com.brihaspathee.zeus.web.model.GeoLocationDto;
 import com.brihaspathee.zeus.web.model.PlanDto;
 import com.brihaspathee.zeus.web.model.PlanRateDto;
@@ -43,6 +46,21 @@ public class LoadPlanData implements CommandLineRunner {
      * Spring Application Context
      */
     private final ApplicationContext applicationContext;
+
+    /**
+     * Geolocation service instance
+     */
+    private final GeoLocationService geoLocationService;
+
+    /**
+     * Plan service instance
+     */
+    private final PlanService planService;
+
+    /**
+     * Plan rate service instance
+     */
+    private final PlanRateService planRateService;
 
     private String csvFileLocation = "/Users/plan/files/*.csv";
 
@@ -127,18 +145,17 @@ public class LoadPlanData implements CommandLineRunner {
         List<GeoLocationDto> geoLocationDtos = new ArrayList<>();
         List<RawPlanDto> distinctGeolocations = rawPlanDtos.stream().filter(distinctByKey(rawPlanDto -> Arrays.asList(rawPlanDto.getStateTypeCode(),
                 rawPlanDto.getFipsCode(),
-                rawPlanDto.getZipCode()))).collect(Collectors.toList());
-        distinctGeolocations.stream().forEach(rawPlanDto -> {
+                rawPlanDto.getZipCode()))).toList();
+        distinctGeolocations.forEach(rawPlanDto -> {
             geoLocationDtos.add(GeoLocationDto.builder()
                             .stateTypeCode(rawPlanDto.getStateTypeCode())
                             .fipsCode(rawPlanDto.getFipsCode())
                             .zipCode(rawPlanDto.getZipCode())
                     .build());
         });
-        // TODO
         // create these locations in the backend and send back the updated geo locations that
         // contains the geo locations with the SK
-        return geoLocationDtos;
+        return geoLocationService.createGeoLocations(geoLocationDtos);
     }
 
     /**
@@ -151,21 +168,22 @@ public class LoadPlanData implements CommandLineRunner {
         // get all the distinct plans from the csv file
         List<RawPlanDto> distinctPlans = rawPlanDtos.stream()
                 .filter(distinctByKey(
-                        rawPlanDto -> Arrays.asList(rawPlanDto.getPlanId()))).collect(Collectors.toList());
+                        rawPlanDto -> Arrays.asList(rawPlanDto.getPlanId()))).toList();
         // Create the plan dto objects from the raw plan dto
-        distinctPlans.stream().forEach(rawPlanDto -> {
+        distinctPlans.forEach(rawPlanDto -> {
             planDtos.add(PlanDto.builder()
                             .planId(rawPlanDto.getPlanId())
                             .planName(rawPlanDto.getPlanName())
                             .planDescription(rawPlanDto.getPlanDescription())
+                            .productTypeCode(rawPlanDto.getProductTypeCode())
                     .build());
         });
         // find the geo-locations associated with each of the plan and add it to the plan dto object
-        planDtos.stream().forEach(planDto -> {
+        planDtos.forEach(planDto -> {
             // Get all the locations associated with the plan from the csv file
             List<RawPlanDto> locations = rawPlanDtos.stream()
                     .filter(rawPlanDto -> rawPlanDto.getPlanId().equals(planDto.getPlanId()))
-                    .collect(Collectors.toList());
+                    .toList();
             Set<GeoLocationDto> geoLocations = new HashSet<>();
             // Find the geo location dto object with the SK so that it can be added to plan
             locations.stream().forEach(rawPlanDto -> {
@@ -178,7 +196,7 @@ public class LoadPlanData implements CommandLineRunner {
         });
         // todo
         // Create the plans in the back end and then send it back with the sks
-        return planDtos;
+        return planService.savePlans(planDtos);
     }
 
     /**
@@ -205,7 +223,7 @@ public class LoadPlanData implements CommandLineRunner {
         });
         log.info("Distinct plan rate size:{}", rateDtos.size());
 //        log.info("Distinct plat rate dtos:{}", dtos);
-        // todo
         // create the plan rates
+        planRateService.savePlanRates(rateDtos);
     }
 }

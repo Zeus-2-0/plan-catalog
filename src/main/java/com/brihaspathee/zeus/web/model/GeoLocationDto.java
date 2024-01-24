@@ -2,6 +2,7 @@ package com.brihaspathee.zeus.web.model;
 
 import lombok.*;
 
+import java.util.List;
 import java.util.Set;
 import java.util.UUID;
 
@@ -41,5 +42,22 @@ public class GeoLocationDto {
      */
     private String zipCode;
 
+    /**
+     * The plans available in the geolocation
+     */
+    private List<PlanDto> plans;
 
+    /**
+     * toString method
+     * @return
+     */
+    @Override
+    public String toString() {
+        return "GeoLocationDto{" +
+                "geoLocationSK=" + geoLocationSK +
+                ", stateTypeCode='" + stateTypeCode + '\'' +
+                ", fipsCode='" + fipsCode + '\'' +
+                ", zipCode='" + zipCode + '\'' +
+                '}';
+    }
 }

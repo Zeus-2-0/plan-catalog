@@ -24,10 +24,10 @@ CREATE TABLE IF NOT EXISTS `PLANCATALOGDB`.`plan` (
     UNIQUE INDEX `plan_id_UNIQUE` (`plan_id` ASC) VISIBLE)
     ENGINE = InnoDB;
 CREATE TABLE IF NOT EXISTS `PLANCATALOGDB`.`plan_geo_location` (
-    `plan_geo_location_sk` VARCHAR(36) NOT NULL,
+--     `plan_geo_location_sk` VARCHAR(36) NOT NULL,
     `plan_sk` VARCHAR(36) NOT NULL,
     `geo_location_sk` VARCHAR(36) NOT NULL,
-    PRIMARY KEY (`plan_geo_location_sk`),
+--     PRIMARY KEY (`plan_geo_location_sk`),
     INDEX `plan_sk_idx` (`plan_sk` ASC) VISIBLE,
     INDEX `geo_location_sk_idx` (`geo_location_sk` ASC) VISIBLE,
     CONSTRAINT `plan_sk`

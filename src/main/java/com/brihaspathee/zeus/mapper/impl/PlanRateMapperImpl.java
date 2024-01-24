@@ -38,7 +38,7 @@ public class PlanRateMapperImpl implements PlanRateMapper {
         }
         return PlanRate.builder()
                 .planRateSK(planRateDto.getPlanRateSK())
-                .plan(Plan.builder().planSK(planRateDto.getPlanRateSK()).build())
+                .plan(Plan.builder().planSK(planRateDto.getPlanDto().getPlanSK()).build())
                 .planPremiumRate(planRateDto.getPlanPremiumRate())
                 .age(planRateDto.getAge())
                 .genderTypeCode(planRateDto.getGenderTypeCode())
@@ -58,7 +58,7 @@ public class PlanRateMapperImpl implements PlanRateMapper {
         }
         return PlanRateDto.builder()
                 .planRateSK(planRate.getPlanRateSK())
-                .planDto(PlanDto.builder().planSK(planRate.getPlanRateSK()).build())
+                .planDto(PlanDto.builder().planSK(planRate.getPlan().getPlanSK()).build())
                 .planPremiumRate(planRate.getPlanPremiumRate())
                 .age(planRate.getAge())
                 .genderTypeCode(planRate.getGenderTypeCode())
