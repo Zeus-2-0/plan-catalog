@@ -51,6 +51,7 @@ public class PlanAPIImpl implements PlanAPI {
 
     @Override
     public ResponseEntity<ZeusApiResponse<GeoLocationList>> getPlansByZip(String zipCode) {
+        log.info("Zip Code:{}", zipCode);
         return null;
     }
 }
