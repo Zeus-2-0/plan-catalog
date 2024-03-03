@@ -1,8 +1,10 @@
 package com.brihaspathee.zeus.mapper.impl;
 
+import com.brihaspathee.zeus.domain.entity.GeoLocation;
 import com.brihaspathee.zeus.domain.entity.Plan;
 import com.brihaspathee.zeus.domain.entity.PlanRate;
 import com.brihaspathee.zeus.mapper.interfaces.PlanRateMapper;
+import com.brihaspathee.zeus.web.model.GeoLocationDto;
 import com.brihaspathee.zeus.web.model.PlanDto;
 import com.brihaspathee.zeus.web.model.PlanRateDto;
 import lombok.RequiredArgsConstructor;
@@ -39,6 +41,7 @@ public class PlanRateMapperImpl implements PlanRateMapper {
         return PlanRate.builder()
                 .planRateSK(planRateDto.getPlanRateSK())
                 .plan(Plan.builder().planSK(planRateDto.getPlanDto().getPlanSK()).build())
+                .geoLocation(GeoLocation.builder().geoLocationSK(planRateDto.getGeoLocationDto().getGeoLocationSK()).build())
                 .planPremiumRate(planRateDto.getPlanPremiumRate())
                 .age(planRateDto.getAge())
                 .genderTypeCode(planRateDto.getGenderTypeCode())
@@ -59,6 +62,7 @@ public class PlanRateMapperImpl implements PlanRateMapper {
         return PlanRateDto.builder()
                 .planRateSK(planRate.getPlanRateSK())
                 .planDto(PlanDto.builder().planSK(planRate.getPlan().getPlanSK()).build())
+                .geoLocationDto(GeoLocationDto.builder().geoLocationSK(planRate.getGeoLocation().getGeoLocationSK()).build())
                 .planPremiumRate(planRate.getPlanPremiumRate())
                 .age(planRate.getAge())
                 .genderTypeCode(planRate.getGenderTypeCode())

@@ -1,5 +1,6 @@
 package com.brihaspathee.zeus.web.model;
 
+import com.fasterxml.jackson.annotation.JsonInclude;
 import lombok.*;
 
 import java.util.Set;
@@ -19,6 +20,7 @@ import java.util.UUID;
 @Builder
 @RequiredArgsConstructor
 @AllArgsConstructor
+@JsonInclude(JsonInclude.Include.NON_NULL)
 public class PlanDto {
 
     private UUID planSK;

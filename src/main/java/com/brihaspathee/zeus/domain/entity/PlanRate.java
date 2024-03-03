@@ -48,6 +48,13 @@ public class PlanRate {
     private Plan plan;
 
     /**
+     * The geolocaton to which the rate is associated
+     */
+    @ManyToOne
+    @JoinColumn(name = "geo_location_sk", nullable = false, columnDefinition = "varchar")
+    private GeoLocation geoLocation;
+
+    /**
      * The premium rate charged for the member
      */
     @Column(name = "plan_premium_rate", nullable = false)
