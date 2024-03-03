@@ -97,11 +97,11 @@ public class PlanMapperImpl implements PlanMapper {
                 .productTypeCode(plan.getProductTypeCode())
                 .planDetailDto(planDetailMapper.planDetailToPlanDetailDto(plan.getPlanDetail()))
                 .build();
-        if(plan.getGeoLocations() != null && !plan.getGeoLocations().isEmpty()){
-            planDto.setGeoLocationDtos(
-                    new HashSet<>(geoLocationMapper.locationsToLocationDtos(
-                            new ArrayList<>(plan.getGeoLocations()))));
-        }
+//        if(plan.getGeoLocations() != null && !plan.getGeoLocations().isEmpty()){
+//            planDto.setGeoLocationDtos(
+//                    new HashSet<>(geoLocationMapper.locationsToLocationDtos(
+//                            new ArrayList<>(plan.getGeoLocations()))));
+//        }
         if(plan.getPlanRates() != null && !plan.getPlanRates().isEmpty()){
             planDto.setPlanRateDtos(
                     new HashSet<>(planRateMapper.planRatesToPlanRateDtos(

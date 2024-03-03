@@ -65,6 +65,12 @@ public class GeoLocation {
     private Set<Plan> plans;
 
     /**
+     * The list of all the plan rates associated with the plan
+     */
+    @OneToMany(mappedBy = "geoLocation", fetch = FetchType.EAGER)
+    private Set<PlanRate> planRates;
+
+    /**
      * The date when the record was created
      */
     @CreationTimestamp

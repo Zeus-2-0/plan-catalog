@@ -1,5 +1,6 @@
 package com.brihaspathee.zeus.web.model;
 
+import com.fasterxml.jackson.annotation.JsonInclude;
 import lombok.*;
 
 import java.math.BigDecimal;
@@ -19,11 +20,14 @@ import java.util.UUID;
 @Builder
 @RequiredArgsConstructor
 @AllArgsConstructor
+@JsonInclude(JsonInclude.Include.NON_NULL)
 public class PlanRateDto {
 
     private UUID planRateSK;
 
     private PlanDto planDto;
+
+    private GeoLocationDto geoLocationDto;
 
     private BigDecimal planPremiumRate;
 
@@ -32,4 +36,15 @@ public class PlanRateDto {
     private String genderTypeCode;
 
     private boolean tobaccoInd;
+
+    @Override
+    public String toString() {
+        return "PlanRateDto{" +
+                "planRateSK=" + planRateSK +
+                ", planPremiumRate=" + planPremiumRate +
+                ", age=" + age +
+                ", genderTypeCode='" + genderTypeCode + '\'' +
+                ", tobaccoInd=" + tobaccoInd +
+                '}';
+    }
 }

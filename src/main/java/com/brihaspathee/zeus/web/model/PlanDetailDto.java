@@ -1,6 +1,7 @@
 package com.brihaspathee.zeus.web.model;
 
 import com.brihaspathee.zeus.domain.entity.PlanDetail;
+import com.fasterxml.jackson.annotation.JsonInclude;
 import jakarta.persistence.*;
 import lombok.*;
 import org.hibernate.annotations.GenericGenerator;
@@ -23,6 +24,7 @@ import java.util.UUID;
 @Builder
 @NoArgsConstructor
 @AllArgsConstructor
+@JsonInclude(JsonInclude.Include.NON_NULL)
 public class PlanDetailDto {
 
     /**

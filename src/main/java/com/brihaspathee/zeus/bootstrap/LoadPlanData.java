@@ -94,7 +94,7 @@ public class LoadPlanData implements CommandLineRunner {
             List<PlanDto> planDtos = getDistinctPlans(rawPlanDtos, geoLocationDtos);
             log.info("Distinct plans size:{}", planDtos.size());
             log.info("Distinct plans:{}", planDtos);
-            createPlanRates(rawPlanDtos, planDtos);
+            createPlanRates(rawPlanDtos, planDtos, geoLocationDtos);
 
         }
     }
@@ -203,13 +203,21 @@ public class LoadPlanData implements CommandLineRunner {
      * Create the plan rates
      * @param rawPlanDtos
      * @param planDtos
+     * @param geoLocationDtos
      */
-    private void createPlanRates(List<RawPlanDto> rawPlanDtos, List<PlanDto> planDtos){
+    private void createPlanRates(List<RawPlanDto> rawPlanDtos, List<PlanDto> planDtos,
+                                 List<GeoLocationDto> geoLocationDtos){
         List<PlanRateDto> rateDtos = new ArrayList<>();
         // Create the plan rate dto object
         rawPlanDtos.stream().forEach(rawPlanDto -> {
             PlanDto plan = planDtos.stream()
                     .filter(planDto -> planDto.getPlanId().equals(rawPlanDto.getPlanId()))
+                    .findFirst()
+                    .get();
+            GeoLocationDto geoLocation = geoLocationDtos.stream()
+                    .filter(geoLocationDto -> geoLocationDto.getFipsCode().equals(rawPlanDto.getFipsCode()) &&
+                            geoLocationDto.getZipCode().equals(rawPlanDto.getZipCode()) &&
+                            geoLocationDto.getStateTypeCode().equalsIgnoreCase(rawPlanDto.getStateTypeCode()))
                     .findFirst()
                     .get();
             PlanRateDto planRateDto = PlanRateDto.builder()
@@ -218,6 +226,7 @@ public class LoadPlanData implements CommandLineRunner {
                     .genderTypeCode(rawPlanDto.getGenderTypeCode())
                     .tobaccoInd(rawPlanDto.isTobaccoInd())
                     .planDto(plan)
+                    .geoLocationDto(geoLocation)
                     .build();
             rateDtos.add(planRateDto);
         });

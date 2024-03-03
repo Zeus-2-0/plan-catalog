@@ -1,6 +1,7 @@
 package com.brihaspathee.zeus.service.interfaces;
 
 import com.brihaspathee.zeus.web.model.GeoLocationDto;
+import com.brihaspathee.zeus.web.model.PlanDto;
 
 import java.util.List;
 
@@ -28,4 +29,22 @@ public interface GeoLocationService {
      * @return
      */
     List<GeoLocationDto> createGeoLocations(List<GeoLocationDto> geoLocationDtos);
+
+    /**
+     * Get all the plans for the zip code
+     * @param zipCode
+     * @return
+     */
+    List<GeoLocationDto> getPlansByZipCode(String zipCode);
+
+    /**
+     * Get all the plans associated with state, fips and zip
+     * @param stateTypeCode
+     * @param fipsCode
+     * @param zipCode
+     * @return
+     */
+    GeoLocationDto getPlansByStateFipsAndZip(String stateTypeCode,
+                                                   String fipsCode,
+                                                   String zipCode);
 }

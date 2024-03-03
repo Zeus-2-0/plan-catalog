@@ -4,6 +4,7 @@ import com.brihaspathee.zeus.domain.entity.GeoLocation;
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.stereotype.Repository;
 
+import java.util.List;
 import java.util.Optional;
 import java.util.UUID;
 
@@ -29,4 +30,25 @@ public interface GeoLocationRepository extends JpaRepository<GeoLocation, UUID> 
     Optional<GeoLocation> findGeoLocationByStateTypeCodeAndAndFipsCodeAndZipCode(String stateTypeCode,
                                                                                  String fipsCode,
                                                                                  String zipCode);
+
+    /**
+     * Find the geo location entity by state
+     * @param stateTypeCode
+     * @return
+     */
+    List<GeoLocation> findGeoLocationByStateTypeCode(String stateTypeCode);
+
+    /**
+     * Find the geo location entity by zip code
+     * @param zipCode
+     * @return
+     */
+    List<GeoLocation> findGeoLocationByZipCode(String zipCode);
+
+    /**
+     * Find the geo location entity by county
+     * @param fipsCode
+     * @return
+     */
+    List<GeoLocation> findGeoLocationByFipsCode(String fipsCode);
 }

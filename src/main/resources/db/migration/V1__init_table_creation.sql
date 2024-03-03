@@ -58,7 +58,8 @@ CREATE TABLE IF NOT EXISTS `PLANCATALOGDB`.`plan_detail` (
     ENGINE = InnoDB;
 CREATE TABLE IF NOT EXISTS `PLANCATALOGDB`.`plan_rate` (
     `plan_rate_sk` VARCHAR(36) NOT NULL COMMENT 'The primary key for the table',
-    `plan_sk` VARCHAR(36) NOT NULL COMMENT 'The foreign key for the plan table\n',
+    `plan_sk` VARCHAR(36) NOT NULL COMMENT 'The foreign key for the plan table',
+    `geo_location_sk` VARCHAR(36) NOT NULL COMMENT 'The foreign key for the geolocation',
     `plan_premium_rate` DECIMAL(10,2) NOT NULL COMMENT 'The plan premium rate for the member for enrolling in the plan',
     `age` INT NOT NULL COMMENT 'The age of the member',
     `gender_type_code` VARCHAR(10) NOT NULL COMMENT 'The gender of the member',

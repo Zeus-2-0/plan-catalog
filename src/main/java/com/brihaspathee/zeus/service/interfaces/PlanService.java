@@ -1,5 +1,7 @@
 package com.brihaspathee.zeus.service.interfaces;
 
+import com.brihaspathee.zeus.dto.rate.RateRequestDto;
+import com.brihaspathee.zeus.dto.rate.RateResponseDto;
 import com.brihaspathee.zeus.web.model.PlanDto;
 
 import java.util.List;
@@ -28,4 +30,6 @@ public interface PlanService {
      * @return
      */
     List<PlanDto> savePlans(List<PlanDto> planDtos);
+
+    RateResponseDto getMemberRates(RateRequestDto rateRequestDto);
 }
