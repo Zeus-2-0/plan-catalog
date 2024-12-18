@@ -22,7 +22,7 @@ paths:
         content:
           application/json:
             schema:
-              $ref: '#/components/schemas/RateRequestDto'
+              $ref: "#/components/schemas/RateRequestDto"
         required: true
       responses:
         "200":
@@ -30,7 +30,7 @@ paths:
           content:
             '*/*':
               schema:
-                $ref: '#/components/schemas/ZeusApiResponseRateResponseDto'
+                $ref: "#/components/schemas/ZeusApiResponseRateResponseDto"
   /api/v1/zeus/plan-catalog:
     get:
       tags:
@@ -42,7 +42,7 @@ paths:
           content:
             '*/*':
               schema:
-                $ref: '#/components/schemas/ZeusApiResponsePlanList'
+                $ref: "#/components/schemas/ZeusApiResponsePlanList"
   /api/v1/zeus/plan-catalog/zip/{zip}:
     get:
       tags:
@@ -60,7 +60,7 @@ paths:
           content:
             '*/*':
               schema:
-                $ref: '#/components/schemas/ZeusApiResponseGeoLocationList'
+                $ref: "#/components/schemas/ZeusApiResponseGeoLocationList"
   /api/v1/zeus/plan-catalog/welcome:
     get:
       tags:
@@ -73,7 +73,7 @@ paths:
           content:
             application/json:
               schema:
-                $ref: '#/components/schemas/WelcomeDto'
+                $ref: "#/components/schemas/WelcomeDto"
   /api/v1/zeus/plan-catalog/state/{state}:
     get:
       tags:
@@ -91,7 +91,7 @@ paths:
           content:
             '*/*':
               schema:
-                $ref: '#/components/schemas/ZeusApiResponseGeoLocationList'
+                $ref: "#/components/schemas/ZeusApiResponseGeoLocationList"
   /api/v1/zeus/plan-catalog/county/{fips}:
     get:
       tags:
@@ -109,7 +109,7 @@ paths:
           content:
             '*/*':
               schema:
-                $ref: '#/components/schemas/ZeusApiResponseGeoLocationList'
+                $ref: "#/components/schemas/ZeusApiResponseGeoLocationList"
 components:
   schemas:
     MemberRateRequestDto:
@@ -144,7 +144,7 @@ components:
         memberRateRequestDtos:
           type: array
           items:
-            $ref: '#/components/schemas/MemberRateRequestDto'
+            $ref: "#/components/schemas/MemberRateRequestDto"
     MemberRateResponseDto:
       type: object
       properties:
@@ -168,7 +168,7 @@ components:
         memberRateResponseDtos:
           type: array
           items:
-            $ref: '#/components/schemas/MemberRateResponseDto'
+            $ref: "#/components/schemas/MemberRateResponseDto"
         exception:
           type: boolean
     ZeusApiResponseRateResponseDto:
@@ -259,7 +259,7 @@ components:
         developerMessage:
           type: string
         response:
-          $ref: '#/components/schemas/RateResponseDto'
+          $ref: "#/components/schemas/RateResponseDto"
     GeoLocation:
       type: object
       properties:
@@ -276,12 +276,12 @@ components:
           uniqueItems: true
           type: array
           items:
-            $ref: '#/components/schemas/Plan'
+            $ref: "#/components/schemas/Plan"
         planRates:
           uniqueItems: true
           type: array
           items:
-            $ref: '#/components/schemas/PlanRate'
+            $ref: "#/components/schemas/PlanRate"
         createdDate:
           type: string
           format: date-time
@@ -295,17 +295,17 @@ components:
           type: string
           format: uuid
         planDetail:
-          $ref: '#/components/schemas/PlanDetail'
+          $ref: "#/components/schemas/PlanDetail"
         geoLocations:
           uniqueItems: true
           type: array
           items:
-            $ref: '#/components/schemas/GeoLocation'
+            $ref: "#/components/schemas/GeoLocation"
         planRates:
           uniqueItems: true
           type: array
           items:
-            $ref: '#/components/schemas/PlanRate'
+            $ref: "#/components/schemas/PlanRate"
         planId:
           type: string
         planName:
@@ -327,7 +327,7 @@ components:
           type: string
           format: uuid
         plan:
-          $ref: '#/components/schemas/Plan'
+          $ref: "#/components/schemas/Plan"
         planMarketingName:
           type: string
         planLevelTypeCode:
@@ -344,7 +344,7 @@ components:
         plans:
           type: array
           items:
-            $ref: '#/components/schemas/Plan'
+            $ref: "#/components/schemas/Plan"
     PlanRate:
       type: object
       properties:
@@ -352,9 +352,9 @@ components:
           type: string
           format: uuid
         plan:
-          $ref: '#/components/schemas/Plan'
+          $ref: "#/components/schemas/Plan"
         geoLocation:
-          $ref: '#/components/schemas/GeoLocation'
+          $ref: "#/components/schemas/GeoLocation"
         planPremiumRate:
           type: number
         age:
@@ -458,7 +458,7 @@ components:
         developerMessage:
           type: string
         response:
-          $ref: '#/components/schemas/PlanList'
+          $ref: "#/components/schemas/PlanList"
     GeoLocationDto:
       type: object
       properties:
@@ -474,14 +474,14 @@ components:
         plans:
           type: array
           items:
-            $ref: '#/components/schemas/PlanDto'
+            $ref: "#/components/schemas/PlanDto"
     GeoLocationList:
       type: object
       properties:
         geoLocationDtos:
           type: array
           items:
-            $ref: '#/components/schemas/GeoLocationDto'
+            $ref: "#/components/schemas/GeoLocationDto"
     PlanDetailDto:
       type: object
       properties:
@@ -489,7 +489,7 @@ components:
           type: string
           format: uuid
         plan:
-          $ref: '#/components/schemas/PlanDto'
+          $ref: "#/components/schemas/PlanDto"
         planMarketingName:
           type: string
         planLevelTypeCode:
@@ -504,12 +504,12 @@ components:
           uniqueItems: true
           type: array
           items:
-            $ref: '#/components/schemas/PlanRateDto'
+            $ref: "#/components/schemas/PlanRateDto"
         geoLocationDtos:
           uniqueItems: true
           type: array
           items:
-            $ref: '#/components/schemas/GeoLocationDto'
+            $ref: "#/components/schemas/GeoLocationDto"
         planId:
           type: string
         planName:
@@ -519,7 +519,7 @@ components:
         productTypeCode:
           type: string
         planDetailDto:
-          $ref: '#/components/schemas/PlanDetailDto'
+          $ref: "#/components/schemas/PlanDetailDto"
     PlanRateDto:
       type: object
       properties:
@@ -527,9 +527,9 @@ components:
           type: string
           format: uuid
         planDto:
-          $ref: '#/components/schemas/PlanDto'
+          $ref: "#/components/schemas/PlanDto"
         geoLocationDto:
-          $ref: '#/components/schemas/GeoLocationDto'
+          $ref: "#/components/schemas/GeoLocationDto"
         planPremiumRate:
           type: number
         age:
@@ -627,7 +627,7 @@ components:
         developerMessage:
           type: string
         response:
-          $ref: '#/components/schemas/GeoLocationList'
+          $ref: "#/components/schemas/GeoLocationList"
     WelcomeDto:
       type: object
       properties:
